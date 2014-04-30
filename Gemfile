@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.13'
-
 ruby '2.1.0'
+
+gem 'rails', '3.2.13'
 
 
 
