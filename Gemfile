@@ -27,3 +27,7 @@ end
   gem 'devise'
   gem 'cancan'
   gem 'will_paginate', '~> 3.0'
+  gem 'carrierwave'
+  gem 'mini_magick'
+  gem 'fog'
+  gem 'figaro'
