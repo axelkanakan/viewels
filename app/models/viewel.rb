@@ -1,7 +1,7 @@
 class Viewel < ActiveRecord::Base
   
   belongs_to :user
-  attr_accessible :body
+  attr_accessible :body, :private
 
   auto_html_for :body do
     html_escape
