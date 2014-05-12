@@ -6,11 +6,11 @@ class Viewel < ActiveRecord::Base
   auto_html_for :body do
     html_escape
     image
-    youtube(:width => 400, :height => 400)
-    vimeo(:width => 400, :height => 400)
-    worldstar(:width => 400, :height => 400)
-    instagram(:width => 400, :height => 400)
-    dailymotion(:width => 400, :height => 400)
+    youtube(:width => 560, :height => 315)
+    vimeo(:width => 560, :height => 315)
+    worldstar(:width => 560, :height => 315)
+    instagram(:width => 560, :height => 315)
+    dailymotion(:width => 560, :height => 315)
     link :target => "_blank", :rel => "nofollow"
     simple_format
   end
