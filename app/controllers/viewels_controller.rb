@@ -1,6 +1,8 @@
 class ViewelsController < ApplicationController
+  
   def index
-  	@viewels = Viewel.all
+    @viewels_private = Viewel.where(private: true)
+    @viewels_public = Viewel.where(private: false)
   end
 
   def show

@@ -10,6 +10,7 @@
 
       <% if current_user.role == 'member' %>
        <div class="checkbox">
+        <%= f.label :body, "Private" %>
         <%= f.check_box :private %>
         <% end %>
       </div>
