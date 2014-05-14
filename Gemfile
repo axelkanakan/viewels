@@ -32,3 +32,4 @@ end
   gem 'fog'
   gem 'figaro'
   gem "auto_html"
+  gem "acts_as_follower", '~> 0.1.1'

@@ -3,6 +3,8 @@ class Viewel < ActiveRecord::Base
   belongs_to :user
   attr_accessible :body, :private
 
+  acts_as_followable
+
   auto_html_for :body do
     html_escape
     image

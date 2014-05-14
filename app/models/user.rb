@@ -10,6 +10,10 @@ class User < ActiveRecord::Base
   has_many :viewels
   before_create :set_member
 
+  acts_as_followable
+
+  acts_as_follower
+
    ROLES =%w[member following]
   def role?(base_role)
   role.nil? ? false : ROLES.index(base_role.to_s) <= ROLES.index(role)
