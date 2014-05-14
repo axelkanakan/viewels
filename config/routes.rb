@@ -1,6 +1,15 @@
 Viewels::Application.routes.draw do
   
+  get "users/show"
+
   resources :viewels
+
+  resources :users do
+    member do
+      get :follow
+      get :unfollow
+    end
+  end
 
   devise_for :users 
 

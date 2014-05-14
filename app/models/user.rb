@@ -14,6 +14,10 @@ class User < ActiveRecord::Base
 
   acts_as_follower
 
+ def followed_viewels
+    following_ids = all_follows.map(&:id)
+    Viewel.where("user_id in (?)", following_ids)
+  end
    ROLES =%w[member following]
   def role?(base_role)
   role.nil? ? false : ROLES.index(base_role.to_s) <= ROLES.index(role)

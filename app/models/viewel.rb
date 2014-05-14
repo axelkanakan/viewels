@@ -4,7 +4,11 @@ class Viewel < ActiveRecord::Base
   attr_accessible :body, :private
 
   acts_as_followable
-
+  
+  def self.viewable_by(user)
+    user.viewels.merge(user.followed_viewels)
+  end
+  
   auto_html_for :body do
     html_escape
     image

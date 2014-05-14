@@ -3,11 +3,13 @@ class ViewelsController < ApplicationController
   def index
     @viewels_private = Viewel.where(private: true)
     @viewels_public = Viewel.where(private: false)
-
+    @users = User.all
+    @viewels = Viewel.viewable_by(current_user)
   end
 
   def show
   	@viewel = Viewel.find(params[:id])
+    @user= @viewel.user
     authorize! :read, @viewel, message: "You need to be premium to view this"
   end
 
