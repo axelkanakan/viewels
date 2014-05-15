@@ -4,6 +4,8 @@ Viewels::Application.routes.draw do
 
   resources :viewels
 
+   devise_for :users 
+
   resources :users do
     member do
       get :follow
@@ -11,7 +13,7 @@ Viewels::Application.routes.draw do
     end
   end
 
-  devise_for :users 
+ 
 
   authenticated :user do
   	root to: 'viewels#index'
