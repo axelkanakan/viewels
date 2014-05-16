@@ -1,21 +1,15 @@
 class ViewelsController < ApplicationController
-
-  #instead have the user see only there current videos
-
-  #current_user's viewels and private videos
-  #and if you are folowing a user it will be added to the public feed...
-  # so current.viewels(public && private) && following user.viewels
   
   def index
-    #@viewels_private = Viewel.where(private: true)
-    #@viewels_public = Viewel.where(private: false)
-    #@users = User.all
+  
     #@viewels = Viewel.viewable_by(current_user)
 
-    @viewels_public = current_user.viewels.where(private: false)
-    @viewels_private = current_user.viewels.where(private: true)
-   
-    @users = User.all
+    #@viewels_public = current_user.viewels.where(private: false)
+    #@viewels_private = current_user.viewels.where(private: true)
+
+    @my_viewels = current_user.viewels
+    @followed_viewels = current_user.followed_viewels
+    @users = User.where("id !=?", current_user.id)
 
   end
 
