@@ -1,34 +1,31 @@
 
 <div class="row">
-<% @viewels_public.each do |viewel| %>
-<div class="col-md-2">
-<%= link_to(image_tag('http://placehold.it/200x200'), viewel , class: 'thumbnail') %>
-</div>
-<% end %>
+	<% @viewels_public.each do |viewel| %>
+  <div class="col-md-2">
+	<%= link_to(image_tag('http://placehold.it/200x200'), viewel, class: 'thumbnail')%>
+	  </div>
+	<% end %>
+
 </div>
 
+ <div class="row"> 
+    <% @viewels_private.each do |viewel| %>
+   <div class="col-md-2">
+    <i class= "fa fa-dot-circle-o"></i>
+	<%= link_to(image_tag('http://placehold.it/200x200'), viewel, class: 'thumbnail') %>
+	</div>
+	<% end %>
+</div>
+    
 <div class="row">
-<% @viewels_private.each do |viewel| %>
-
-<div class="col-md-2">
- <i class="fa fa-dot-circle-o"></i>
-<%= link_to(image_tag('http://placehold.it/200x200'), viewel , class: 'thumbnail') %>
+  <% @users.each do |user| %>
+  <div class="col-md-4">
+   <p><%= user.email %></p>
+   <% if current_user.following?(user) %>
+     <%= link_to "Unfollow", unfollow_user_path(user) %>
+   <% else %>
+     <%= link_to "Follow", follow_user_path(user) %>
+   <% end %>
 </div>
-<% end %>
-</div>
-
-
-<div class="row">
-<div class="col-md-4">
-<% @users.each do |user| %>
-<p><%= user.email %></p>
-<% if current_user.following?(user) %>
-<%= link_to "Unfollow", unfollow_user_path(user) %>
-<% else %>
-<%= link_to "Follow", follow_user_path(user) %>
-<% end %>
-
-
-<% end %>
-</div>
+   <% end %>
 </div>

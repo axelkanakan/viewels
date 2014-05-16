@@ -8,6 +8,7 @@ class UsersController < ApplicationController
   if current_user
     if current_user == @user
       flash[:error] = "You cannot follow yourself."
+      redirect_to root_path
     else
       
       current_user.follow(@user)
