@@ -8,7 +8,7 @@ class ViewelsController < ApplicationController
     #@viewels_private = current_user.viewels.where(private: true)
 
     @my_viewels = current_user.viewels
-    @followed_viewels = current_user.followed_viewels
+    @followed_viewels = current_user.followed_viewels.where(private: false)
     @users = User.where("id !=?", current_user.id)
 
   end
@@ -16,7 +16,7 @@ class ViewelsController < ApplicationController
   def show
   	@viewel = Viewel.find(params[:id])
     @user= @viewel.user
-    authorize! :read, @viewel, message: "You need to be premium to view this"
+   
   end
 
   def new
