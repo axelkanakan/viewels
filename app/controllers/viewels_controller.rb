@@ -8,6 +8,7 @@ class ViewelsController < ApplicationController
     #@viewels_private = current_user.viewels.where(private: true)
 
     @my_viewels = current_user.viewels
+    @my_viewels_p = current_user.viewels.where(private: true)
     @followed_viewels = current_user.followed_viewels.where(private: false)
     @users = User.where("id !=?", current_user.id)
 

@@ -1,43 +1,54 @@
-
-<%= link_to 'Add viewel', new_viewel_path %>
-
-<div class="row">
-<h1>My viewels</h1>
-<% @my_viewels.each do |viewel| %>
 <div class="col-md-2">
-  <%= link_to(image_tag('http://placehold.it/200x200'), viewel, class: 'thumbnail') %>
-</div>
-<% end %>
+
+  <div class="row">
+    <div class="col-md-12">
+   
+	  <% if current_user.avatar? %>
+	    <%= image_tag current_user.avatar.small.url, class: 'thumbnail' %>
+     
+      <% else %>
+       <%= image_tag 'anon.jpg', class: 'thumbnail' %>
+        <% end %>
+     </div>
+  </div>
+  <%= link_to 'Add viewel', new_viewel_path, class: 'btn btn-info' %>
+
+  <%= link_to 'Myviewls', new_viewel_path, class: 'btn btn-success', id: 'space' %>
 </div>
 
-<div class="row">
-<% @followed_viewels.each do |viewel| %>
+<div class="col-md-8">
+	<h1 style="text-align:center;"><b>Vstream</b></h1>
+	<hr>
+	<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <% @followed_viewels.each do |viewel| %>
+      <%= viewel.body_html %>
+      <p><%= viewel.user.email %></p> 
+    <% end %>
+ </div>
+</div>
+</div>
+
+
 <div class="col-md-2">
-  <%= link_to(image_tag('http://placehold.it/200x200'), viewel, class: 'thumbnail') %>
+  <div class="row">
+    <div class="col-md-12">
+
+    	<% @users.each do |user| %>
+    	<% if user.avatar?%>
+    	<%= image_tag user.avatar.small.url, class: 'thumbnail', id: 'space' %>
+    	<% else %>
+    	<%= image_tag 'anon.jpg', class: 'thumbnail', id: 'space' %>
+    	<% end %>
+    	<% if current_user.following?(user) %>
+     	<%= link_to "Unfollow", unfollow_user_path(user), class: 'btn btn-danger' %>
+    	<% else %>
+    	<%= link_to "Follow", follow_user_path(user), class: 'btn btn-primary'%>
+       <% end %>
+    <% end %>
+    </div>
+	</div>
 </div>
-<% end %>
-</div>
-
-
-
-<div class="row">
-  <% @users.each do |user| %>
-  <div class="col-md-4">
-  	<p><%= user.email %></p>
-   <% if current_user.following?(user) %>
-     <%= link_to "Unfollow", unfollow_user_path(user) %>
-   <% else %>
-     <%= link_to "Follow", follow_user_path(user) %>
-   <% end %>
-</div>
-   <% end %>
-</div>
-
-
-
-
-
-
 
 
 
