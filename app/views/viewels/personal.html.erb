@@ -1,0 +1,33 @@
+<div class="col-md-2">
+  <div class="row">
+    <div class="col-md-12">
+   
+	  <% if current_user.avatar? %>
+	    <%= image_tag current_user.avatar.small.url, class: 'thumbnail' %>
+     
+      <% else %>
+       <%= image_tag 'anon.jpg', class: 'thumbnail' %>
+        <% end %>
+     </div>
+  </div>
+  <%= link_to 'Add viewl', new_viewel_path, class: 'btn btn-primary' %>
+
+  <%= link_to 'Vstream', root_path, class: 'btn btn-success', id: 'space' %>
+</div>
+
+<div class="col-md-8">
+	<h1 style="text-align:center;"><b>My Viewls</b></h1>
+	<hr>
+	<div class="row">
+       <div class="col-md-10 col-md-offset-1">
+       	<% @my_viewels.each do |viewel| %>
+        <%= viewel.body_html %>
+        <% end %>
+           
+       </div>
+    
+
+	</div>
+
+
+</div>

@@ -11,9 +11,9 @@
         <% end %>
      </div>
   </div>
-  <%= link_to 'Add viewel', new_viewel_path, class: 'btn btn-info' %>
+  <%= link_to 'Add viewl', new_viewel_path, class: 'btn btn-primary' %>
 
-  <%= link_to 'Myviewls', new_viewel_path, class: 'btn btn-success', id: 'space' %>
+  <%= link_to 'My viewls', personal_path, class: 'btn btn-success', id: 'space' %>
 </div>
 
 <div class="col-md-8">
@@ -40,10 +40,13 @@
     	<% else %>
     	<%= image_tag 'anon.jpg', class: 'thumbnail', id: 'space' %>
     	<% end %>
+    	<small>
+          <%= user.email %><br>
+    	</small>
     	<% if current_user.following?(user) %>
-     	<%= link_to "Unfollow", unfollow_user_path(user), class: 'btn btn-danger' %>
+     	<%= link_to "Unfollow", unfollow_user_path(user), class: 'btn btn-danger', id:'space' %>
     	<% else %>
-    	<%= link_to "Follow", follow_user_path(user), class: 'btn btn-primary'%>
+    	<%= link_to "Follow", follow_user_path(user), class: 'btn btn-primary', id:'space'%>
        <% end %>
     <% end %>
     </div>

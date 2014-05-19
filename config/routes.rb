@@ -1,8 +1,10 @@
 Viewels::Application.routes.draw do
-  
+    
   get "users/show"
 
   resources :viewels
+
+  match "personal" => 'viewels#personal', via: :get
 
    devise_for :users 
 
@@ -18,7 +20,7 @@ Viewels::Application.routes.draw do
   authenticated :user do
   	root to: 'viewels#index'
   end
-
+  
   match "about" => 'welcome#about', via: :get
   
   root :to => 'welcome#index'

@@ -14,10 +14,16 @@ class ViewelsController < ApplicationController
 
   end
 
+  def personal
+    @my_viewels = current_user.viewels
+    @my_viewels_p = current_user.viewels.where(private: true)
+    @followed_viewels = current_user.followed_viewels.where(private: false)
+    @users = User.where("id !=?", current_user.id) 
+  end
+
   def show
   	@viewel = Viewel.find(params[:id])
     @user= @viewel.user
-   
   end
 
   def new
