@@ -6,7 +6,9 @@ Viewels::Application.routes.draw do
 
   match "personal" => 'viewels#personal', via: :get
 
-   devise_for :users 
+  devise_for :users 
+  
+  resources :users, only: [:show]
 
   resources :users do
     member do
