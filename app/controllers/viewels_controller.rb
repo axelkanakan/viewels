@@ -1,13 +1,7 @@
 class ViewelsController < ApplicationController
   
   def index
-  
-    #@viewels = Viewel.viewable_by(current_user)
-
-    #@viewels_public = current_user.viewels.where(private: false)
-    #@viewels_private = current_user.viewels.where(private: true)
-
-    @my_viewels = current_user.viewels
+    @my_viewels = current_user.viewels.where(private: false )
     @my_viewels_p = current_user.viewels.where(private: true)
     @followed_viewels = current_user.followed_viewels.where(private: false)
     @users = User.where("id !=?", current_user.id)
@@ -15,7 +9,7 @@ class ViewelsController < ApplicationController
   end
 
   def personal
-    @my_viewels = current_user.viewels
+    @my_viewels = current_user.viewels.where(private: false)
     @my_viewels_p = current_user.viewels.where(private: true)
     @followed_viewels = current_user.followed_viewels.where(private: false)
     @users = User.where("id !=?", current_user.id) 
