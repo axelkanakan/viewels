@@ -3,9 +3,20 @@
   	<% if @viewel.private? %>
      <i class="fa fa-dot-circle-o fa-2x"></i>
   	<% end %>
+  	<% if @viewel.title? %>
+  	<h1><b><%= @viewel.title %></b></h1>
+  	<hr/>
+  	<% end %>
    <p><%= @viewel.body_html %></p>
    <p><%= @viewel.user.email %></p>
+    <% if can? :edit, @viewel %>
+   <%= link_to "Edit", edit_viewel_path, class: 'btn btn-warning' %>
+   <% end %>
+   <%if can? :destroy, @viewel %>
+   <%= link_to "Delete", @viewel, method: :delete, class: 'btn btn-danger' %>
+   <% end %>
   </div>
+
 </div>
 
 

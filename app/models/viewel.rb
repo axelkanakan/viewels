@@ -1,7 +1,7 @@
 class Viewel < ActiveRecord::Base
   
   belongs_to :user
-  attr_accessible :body, :private, :avatar
+  attr_accessible :body, :private, :avatar, :title
 
   acts_as_followable
   

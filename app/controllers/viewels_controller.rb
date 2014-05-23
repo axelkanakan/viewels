@@ -20,6 +20,22 @@ class ViewelsController < ApplicationController
     @user= @viewel.user
   end
 
+
+  def edit
+    @viewel = Viewel.find(params[:id])
+    authorize! :edit, @viewel, message: "You need to own the viewel to edit it."
+  end
+
+  def update
+    @viewel = Viewel.find(params[:id])
+    authorize! :update, @viewel, message: "You need to own the post to edit it."
+    if @viewel.update_attributes(params[:viewel])
+      render :show, notice: "Post was saved successfully."
+    else
+      flash[:error] = "There was an error saving the post. Please try again."
+      render :new
+    end
+  end
   def new
      @viewel = Viewel.new
   end
@@ -34,4 +50,22 @@ class ViewelsController < ApplicationController
        render :new
    end
   end
+
+  def destroy
+    @viewel = Viewel.find(params[:id])
+    name = @viewel.title 
+    if @viewel.destroy
+      authorize! :destroy, @viewel, message: "You need to own the Viewl to delete it."
+      if @viewel.title?
+      flash[:notice] ="#{name} was deleted successfully!"
+      redirect_to root_path
+      else
+        flash[:notice]="Viewl deleted successfully!"
+        redirect_to root_path
+      end
+    else
+      flash[:error]= "There was an error deleting Viewl!"
+      render :show 
+  end
+end
 end

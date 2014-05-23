@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140518043956) do
+ActiveRecord::Schema.define(:version => 20140522211235) do
 
   create_table "follows", :force => true do |t|
     t.integer  "followable_id",                      :null => false
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(:version => 20140518043956) do
     t.integer  "user_id"
     t.boolean  "private"
     t.string   "avatar"
+    t.string   "title"
   end
 
   add_index "viewels", ["user_id"], :name => "index_viewels_on_user_id"
