@@ -25,7 +25,8 @@
       <%= viewel.body_html %>
       <p><%= viewel.user.email %></p> 
     <% end %>
- </div>
+    <%= will_paginate @viewels, renderer: BootstrapPagination::Rails %>
+  </div>
 </div>
 </div>
 

@@ -5,6 +5,7 @@ class ViewelsController < ApplicationController
     @my_viewels_p = current_user.viewels.where(private: true)
     @followed_viewels = current_user.followed_viewels.where(private: false)
     @users = User.where("id !=?", current_user.id)
+    @viewels = @followed_viewels.paginate(page: params[:page], per_page: 3)
 
   end
 
@@ -13,6 +14,7 @@ class ViewelsController < ApplicationController
     @my_viewels_p = current_user.viewels.where(private: true)
     @followed_viewels = current_user.followed_viewels.where(private: false)
     @users = User.where("id !=?", current_user.id) 
+    @viewels = @my_viewels.paginate(page: params[:page], per_page: 3)
   end
 
   def show

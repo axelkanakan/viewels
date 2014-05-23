@@ -23,11 +23,7 @@
        	<% @my_viewels.each do |viewel| %>
         <%= viewel.body_html %>
         <% end %>
-           
-       </div>
-    
-
+        <%= will_paginate @viewels, renderer: BootstrapPagination::Rails %>
+      </div>
 	</div>
-
-
 </div>
