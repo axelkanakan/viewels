@@ -23,12 +23,15 @@
     <div class="col-md-10 col-md-offset-1">
       <% @followed_viewels.each do |viewel| %>
       <%= viewel.body_html %>
-      <p><%= viewel.user.email %></p> 
+      <%= link_to viewel do %>
+      <p><%= viewel.user.name || viewel.user.email %></p> 
+      <% end %>
     <% end %>
-    <%= will_paginate @viewels, renderer: BootstrapPagination::Rails %>
+   <%= will_paginate @viewels, renderer: BootstrapPagination::Rails %>
   </div>
 </div>
 </div>
+
 
 
 <div class="col-md-2">
@@ -42,7 +45,7 @@
     	<%= image_tag 'anon.jpg', class: 'thumbnail', id: 'space' %>
     	<% end %>
     	<small>
-          <%= user.email %><br>
+          <%= user.name || user.email %><br>
     	</small>
     	<% if current_user.following?(user) %>
      	<%= link_to "Unfollow", unfollow_user_path(user), class: 'btn btn-danger', id:'space' %>

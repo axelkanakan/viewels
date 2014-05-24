@@ -5,6 +5,7 @@ class Viewel < ActiveRecord::Base
 
   acts_as_followable
   
+  self.per_page = 3
  
   
   auto_html_for :body do

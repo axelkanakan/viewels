@@ -8,13 +8,16 @@
   	<hr/>
   	<% end %>
    <p><%= @viewel.body_html %></p>
-   <p><%= @viewel.user.email %></p>
+   <p><%= @viewel.user.name || @viewel.user.email %></p>
     <% if can? :edit, @viewel %>
    <%= link_to "Edit", edit_viewel_path, class: 'btn btn-warning' %>
    <% end %>
    <%if can? :destroy, @viewel %>
    <%= link_to "Delete", @viewel, method: :delete, class: 'btn btn-danger' %>
    <% end %>
+
+   <%= link_to 'Vstream', root_path, class: 'btn btn-success' %>
+   <%= link_to 'My viewls', personal_path, class: 'btn btn-info' %>
   </div>
 
 </div>
