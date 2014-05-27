@@ -8,5 +8,5 @@ class Ability
         can :manage, Viewel, :user_id => user.id          
     end
 
- end
+  end
 end

@@ -5,6 +5,7 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
   <%= javascript_include_tag "application" %>
+  <meta name="viewport" content="width=device-width">
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -20,50 +21,48 @@
     </button>
     <a class="navbar-brand" href="#"><b>Viewls</b></a>
   </div>
-  <div class="navbar-collapse collapse navbar-inverse-collapse">
-    <ul class="nav navbar-nav">
-      <li><%= link_to "Home", root_path, class: 'active' %></li>
-      <li><%= link_to "About", about_path %></li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-    	
-          <% if current_user %>
-          <li>
-          <%= link_to users_show_path do%>
-          <i class="fa fa-user fa-lg"> </i>
-          <% end %>
-          </li>
-           <li><%= link_to "Hello #{current_user.name||current_user.email}!", edit_user_registration_path %></li> 
-           <li><%= link_to "Sign out", destroy_user_session_path, method: :delete%></li>
-             <% else %>
+    <div class="navbar-collapse collapse navbar-inverse-collapse">
+      <ul class="nav navbar-nav">
+        <li><%= link_to "Home", root_path, class: 'active' %></li>
+        <li><%= link_to "About", about_path %></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+    	   <% if current_user %>
+           <li><%= link_to users_show_path do%>
+            <i class="fa fa-user fa-lg"> </i>
+         <% end %>
+            </li>
+          <li><%= link_to "Hello #{current_user.name ||current_user.email}!", edit_user_registration_path %></li> 
+          <li><%= link_to "Sign out", destroy_user_session_path, method: :delete%></li>
+            <% else %>
              <li><%= link_to "Sign In", new_user_session_path %></li> 
              <li><%= link_to "Sign Up", new_user_registration_path %></li>
            <% end %>
-    </ul>
+       </ul>
+    </div>
   </div>
-</div>
-</div>
+ </div>
 
 <div class="col-lg-12">
-  <% if flash[:notice] %>
+    <% if flash[:notice] %>
         <div class="alert alert-dismissable alert-success">
           <button type="button" class="close" data-dismiss="alert">&times;</button>
-          <%= flash[:notice] %>
-        </div>
-      <% elsif flash[:error] %>
+            <%= flash[:notice] %>
+         </div>
+    <% elsif flash[:error] %>
         <div class="alert alert-dismissable alert-danger">
           <button type="button" class="close" data-dismiss="alert">&times;</button>
-          <%= flash[:error] %>
-        </div>
-      <% elsif flash[:alert] %>
+            <%= flash[:error] %>
+         </div>
+    <% elsif flash[:alert] %>
         <div class="alert alert-dismissable alert-warning">
           <button type="button" class="close" data-dismiss="alert">&times;</button>
           <%= flash[:alert] %>
-        </div>
+         </div>
      <% end %>
- </div>
-     <div class="container">
-<%= yield %>
-</div>
+   </div>
+   <div class="container">
+        <%= yield %>
+   </div>
 </body>
 </html>
